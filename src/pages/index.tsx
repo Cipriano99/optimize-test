@@ -1,6 +1,14 @@
 import Head from 'next/head'
 import styles from '@/src/styles/Home.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    dataLayer: any;
+    google_optimize: any
+  }
+}
 
 const simpleUserList = [
   {name: 'Test user 01', age: 20, email: 'testuser01@test.com'},
@@ -35,6 +43,18 @@ export default function Home() {
 
   setTimeout(() => setIsLoading(false), 800)
 
+  const optimizerFunction = async () => {
+    const dataLayer = window.dataLayer || [];
+
+    if (dataLayer) {
+      await dataLayer.push({ event: "optimize.activate" });
+    }  
+  };
+
+  useEffect(() => {
+    optimizerFunction();
+  }, []);
+
   return (
     <>
       <Head>
@@ -46,18 +66,19 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1>Lista teste de usuários</h1>
+        <p>TESTE</p>
 
       {isLoading ? <span>Carregando lista de usuários...</span> : (
         <table>
             <tr>
               {Object.keys(simpleUserList[0]).map(
-                item => <th>{item}</th>
+                item => <th key={item}>{item}</th>
               )}
             </tr>
 
               {simpleUserList.map( 
                 user => (
-                  <tr>
+                  <tr key-={user.email}>
                     <td>{user.name}</td>
                     <td>{user.age}</td>
                     <td>{user.email}</td>
