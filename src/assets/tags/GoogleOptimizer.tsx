@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger */
 import React from 'react';
 
-export const GoogleAnalyticsBase: React.FC = () => (
+export const GoogleOptimizer: React.FC = () => (
   <>
     <script
       async
-      src={`https://www.googletagmanager.com/gtag/js?id=G-1931EEYEFW`}
+      src={`https://www.googleoptimize.com/optimize.js?id=OPT-M76PGZ3`}
     />
     <script
       dangerouslySetInnerHTML={{
@@ -14,7 +14,7 @@ export const GoogleAnalyticsBase: React.FC = () => (
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-1931EEYEFW');
+            gtag('config', 'G-1931EEYEFW', { 'optimize_id': 'OPT-M76PGZ3'});
             `,
       }}
     />
