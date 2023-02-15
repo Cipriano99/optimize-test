@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import styles from '@/src/styles/Home.module.css'
 import { useEffect, useState } from 'react'
-import Link from 'next/link';
 
 declare global {
   interface Window {
@@ -39,7 +38,7 @@ const simpleUserList = [
   {name: 'Test user 25', age: 20, email: 'testuser25@test.com'},
 ]
 
-export default function Home() {
+export default function Users() {
   const [isLoading, setIsLoading] = useState(true)
 
   setTimeout(() => setIsLoading(false), 800)
@@ -66,8 +65,28 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1>Usuários</h1>
-        <Link href={'/users'} >Ver lista de usuários</Link>
+        <h1>Lista teste de usuários</h1>
+        <p>TESTE</p>
+
+      {isLoading ? <span>Carregando lista de usuários...</span> : (
+        <table>
+            <tr>
+              {Object.keys(simpleUserList[0]).map(
+                item => <th key={item}>{item}</th>
+              )}
+            </tr>
+
+              {simpleUserList.map( 
+                user => (
+                  <tr key-={user.email}>
+                    <td>{user.name}</td>
+                    <td>{user.age}</td>
+                    <td>{user.email}</td>
+                  </tr>
+                )
+              )}
+          </table>
+        )}
       </main>
     </>
   )
