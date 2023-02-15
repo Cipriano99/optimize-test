@@ -5,7 +5,7 @@ export const GoogleAnalyticsBase: React.FC = () => (
   <>
     <script
       async
-      src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      src={`https://www.googleoptimize.com/optimize.js?id=OPT-M76PGZ3`}
     />
     <script
       dangerouslySetInnerHTML={{
@@ -14,7 +14,7 @@ export const GoogleAnalyticsBase: React.FC = () => (
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+            gtag('config', '', { 'optimize_id': 'OPT-M76PGZ3'});
             `,
       }}
     />
