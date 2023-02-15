@@ -1,0 +1,33 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 6rem;
+  /* min-height: 100vh; */
+}
+
+.main span {
+  font-size: medium;
+}
+
+.main table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.main table th {
+  text-transform: capitalize;
+}
+
+.main table td, .main table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.main table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
